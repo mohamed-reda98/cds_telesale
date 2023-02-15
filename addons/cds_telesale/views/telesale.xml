@@ -5,13 +5,12 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <notebook position="inside">
-                <page string='Telesales'>
-                    <group>
-                        <field name="is_tele_sale"/>
-                    </group>
-                </page>
-            </notebook>
+
+            <xpath expr="//group[@name='sale_header']" position="after">
+                <group name="first" string="TeleSale">
+                    <field name="is_tele_sale"/>
+                </group>
+            </xpath>
         </field>
     </record>
 
