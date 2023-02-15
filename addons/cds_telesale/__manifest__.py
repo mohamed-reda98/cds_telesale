@@ -13,9 +13,11 @@
         'Mohamed Reda <mohamed_reda741@gmail.com>',
     ],
     'version': '0.1',
-    'depends': ['base'],
+    'depends': ['base', 'sale'],
     'data': [
         # 'security/ir.model.access.csv',
+        'views/menu.xml',
+        'views/telesale.xml',
     ],
     "pre_init_hook": None,
     "post_init_hook": None,

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="tele_sale_from_view_inherit">
+        <field name="name">telesales.order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string='Telesales'>
+                    <group>
+                        <field name="is_tele_sale"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+
+    <record id="new_sale_order_action" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">form,tree</field>
+    </record>
+
+
+    <menuitem id="cat_telesale_menu" name="TeleSales" parent="tele_sale_root"/>
+
+    <menuitem id="new_orders_menu" name="Orders" parent="cat_telesale_menu" action="new_sale_order_action"
+              sequence="0"/>
+</odoo>
