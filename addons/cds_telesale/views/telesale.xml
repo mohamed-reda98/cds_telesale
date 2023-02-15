@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    
-    <!--    tree view-->
+
+    <!--    tree view for order  -->
 
     <record model="ir.ui.view" id="tele_sale_tree_view_inherit">
         <field name="name">telesales.order.tree</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_tree"/>
-        <field name="arch" type="xml">
 
-            <xpath expr="//field[@name='name']" position="after">
-                <field name="is_tele_sale"/>
-            </xpath>
-        </field>
     </record>
 
-    <!--    form view-->
+    <!--    form view for order -->
     <record model="ir.ui.view" id="tele_sale_from_view_inherit">
-        <field name="name">telesales.order</field>
+        <field name="name">telesales.order.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
@@ -30,15 +25,44 @@
         </field>
     </record>
 
-    <record id="new_sale_order_action" model="ir.actions.act_window">
-        <field name="name">Orders</field>
-        <field name="res_model">sale.order</field>
-        <field name="view_mode">tree,form</field>
+
+    <!--    tree view for quotations -->
+    <record model="ir.ui.view" id="tele_sale_tree_view_inherit">
+        <field name="name">telesales.quotations.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+
+    </record>
+
+    <!--    form view for quotations -->
+
+    <record model="ir.ui.view" id="tele_sale_from_view_inherit">
+        <field name="name">telesales.quotations.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
     </record>
 
 
-    <menuitem id="cat_telesale_menu" name="TeleSales" parent="tele_sale_root"/>
+    <record id="new_sale_order_action" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+    </record>
 
-    <menuitem id="new_orders_menu" name="Orders" parent="cat_telesale_menu" action="new_sale_order_action"
+    <record id="new_quotations_action" model="ir.actions.act_window">
+        <field name="name">Quotations</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+        <field name="context">{'search_default_my_quotation': 1}</field>
+
+    </record>
+
+
+    <menuitem id="cat_order_menu" name="Orders" parent="tele_sale_root"/>
+
+    <menuitem id="new_orders_menu" name="Orders" parent="cat_order_menu" action="new_sale_order_action"
+              sequence="0"/>
+
+    <menuitem id="new_quotations_menu" name="Quotations" parent="cat_order_menu" action="new_quotations_action"
               sequence="0"/>
 </odoo>
