@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    
+    <!--    tree view-->
+
+    <record model="ir.ui.view" id="tele_sale_tree_view_inherit">
+        <field name="name">telesales.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="is_tele_sale"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    form view-->
     <record model="ir.ui.view" id="tele_sale_from_view_inherit">
         <field name="name">telesales.order</field>
         <field name="model">sale.order</field>
@@ -14,11 +30,10 @@
         </field>
     </record>
 
-
     <record id="new_sale_order_action" model="ir.actions.act_window">
         <field name="name">Orders</field>
         <field name="res_model">sale.order</field>
-        <field name="view_mode">form,tree</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
 
