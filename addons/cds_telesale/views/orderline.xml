@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="new_orderline_action" model="ir.actions.act_window">
+        <field name="name">Order Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order.line</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Add New order line!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="new_orderline_menu" name="Order lines" parent="cat_order_menu" action="new_orderline_action"
+              sequence="0"/>
+
+</odoo>

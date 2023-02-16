@@ -18,6 +18,7 @@
         # 'security/ir.model.access.csv',
         'views/menu.xml',
         'views/telesale.xml',
+        'views/orderline.xml',
     ],
     "pre_init_hook": None,
     "post_init_hook": None,
