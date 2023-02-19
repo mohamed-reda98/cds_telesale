@@ -15,7 +15,8 @@
     'version': '0.1',
     'depends': ['base', 'sale'],
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+        'security/security.xml',
         'views/menu.xml',
         'views/telesale.xml',
         'views/orderline.xml',

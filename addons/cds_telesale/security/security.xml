@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="module_category_telesales" model="ir.module.category">
+        <field name="name">Telesales</field>
+        <field name="sequence" eval="1"/>
+    </record>
+
+    <record id="group_telesales_user" model="res.groups">
+        <field name="name">Telesales User</field>
+        <field name="category_id" ref="module_category_telesales"/>
+    </record>
+
+    <record id="group_telesales_manager" model="res.groups">
+        <field name="name">Telesales Manager</field>
+        <field name="category_id" ref="module_category_telesales"/>
+        <field name="implied_ids" eval="[(4, ref('group_telesales_user'))]"/>
+    </record>
+</odoo>
