@@ -60,9 +60,10 @@
 
     <menuitem id="cat_order_menu" name="Orders" parent="tele_sale_root"/>
 
-    <menuitem id="new_orders_menu" name="Orders" parent="cat_order_menu" action="new_sale_order_action"
+    <menuitem id="new_orders_menu" name="Orders" parent="cat_order_menu" action="sale.action_orders"
               sequence="0"/>
 
-    <menuitem id="new_quotations_menu" name="Quotations" parent="cat_order_menu" action="new_quotations_action"
+    <menuitem id="new_quotations_menu" name="Quotations" parent="cat_order_menu"
+              action="sale.action_quotations_with_onboarding"
               sequence="0"/>
 </odoo>
