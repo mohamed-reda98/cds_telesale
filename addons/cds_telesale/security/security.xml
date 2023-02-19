@@ -16,4 +16,21 @@
         <field name="category_id" ref="module_category_telesales"/>
         <field name="implied_ids" eval="[(4, ref('group_telesales_user'))]"/>
     </record>
+
+
+    <record id="telesales_user_rule" model="ir.rule">
+        <field name="name">Telesales user access their own entries</field>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="groups" eval="[(4, ref('group_telesales_user'))]"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+    </record>
+    
+    <record id="telesales_manager_rule" model="ir.rule">
+        <field name="name">Telesales Manager Can See All Records</field>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="groups" eval="[(4, ref('group_telesales_manager'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+    </record>
+
+
 </odoo>
