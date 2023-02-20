@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="return_reason_action" model="ir.actions.act_window">
+        <field name="name">Return Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">return.reason</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Add New Return Reason
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="cat_config_menu" name="Configuration" parent="tele_sale_root"/>
+
+    <menuitem id="return_reason_menu" name="Return Reason" parent="cat_config_menu" action="return_reason_action"
+              sequence="0"/>
+
+</odoo>

@@ -20,6 +20,7 @@
         'views/menu.xml',
         'views/telesale.xml',
         'views/orderline.xml',
+        'views/return_reason.xml',
     ],
     "pre_init_hook": None,
     "post_init_hook": None,
