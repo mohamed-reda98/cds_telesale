@@ -20,6 +20,7 @@
             <xpath expr="//group[@name='sale_header']" position="after">
                 <group name="first" string="TeleSale">
                     <field name="is_tele_sale"/>
+                    <field name="reason"/>
                 </group>
             </xpath>
         </field>
