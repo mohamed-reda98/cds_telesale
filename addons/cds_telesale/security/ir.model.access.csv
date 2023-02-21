@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 telesale_user,telesale user,model_sale_order,group_telesales_user,1,1,1,0
 telesale_manager,telesale manager,model_sale_order,group_telesales_manager,1,1,1,1
 return_reason_all,return reason all,model_return_reason,,1,1,1,1
+wizard_change_reason_all,change reason all,model_return_reason_wizard,,1,1,1,1

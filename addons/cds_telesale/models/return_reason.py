@@ -8,9 +8,13 @@ class ReturnReason(models.Model):
 
     name = fields.Char(string='Return Reason')
 
+    # def action_open_wizard_change_reason(self):
+    #     action = {
+    #         "name": "Change Reason",
+    #         "type": "ir.actions.act_window",
+    #         "res_model": "sale.order",
+    #         "views": [[self.env.ref('cds_telesale.change_reason_action').id, "form"]],
+    #         # "res_id": self.id,
+    #     }
+    #     return action
 
-
-    # def change_record_reason(self):
-    #     # Add code here
-    #     for record in records:
-    #         record

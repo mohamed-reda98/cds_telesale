@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="change_reason_view_form" model="ir.ui.view">
+        <field name="name">change.reason.form</field>
+        <field name="model">return.reason.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Change Reason">
+                <group class="oe_title">
+                    <field name="reason"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="change_reason_action" model="ir.actions.act_window">
+        <field name="name">Change Reason</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">return.reason.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="change_reason_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="test_menu" name="Test" parent="cat_order_menu" action="change_reason_action"
+              sequence="0"/>
+</odoo>

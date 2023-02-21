@@ -15,18 +15,17 @@
     </record>
 
 
-<!--    <record id="action_change_return_reason" model="ir.actions.server">-->
-<!--        <field name="name">Change Return Reason</field>-->
-<!--        <field name="type">ir.actions.server</field>-->
-<!--        <field name="model_id" ref="model_sale_order"/>-->
-<!--        <field name="binding_model_id" ref="model_sale_order"/>-->
-<!--        <field name="state">code</field>-->
-<!--        <field name="code">-->
-<!--                if records:-->
-<!--                    action = records.return_reason()-->
-
-<!--        </field>-->
-<!--    </record>-->
+    <record id="action_change_return_reason" model="ir.actions.server">
+        <field name="name">Change Return Reason</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                action=records.calling_wizard_change_reason()
+        </field>
+    </record>
 
 
     <menuitem id="cat_config_menu" name="Configuration" parent="tele_sale_root"/>
