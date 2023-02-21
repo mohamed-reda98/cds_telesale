@@ -9,4 +9,11 @@ class Telesale(models.Model):
     is_tele_sale = fields.Boolean(string="TeleSale", default=False)
 
     def calling_wizard_change_reason(self):
-        return self.env.ref('cds_telesale.change_reason_action')
+        # return self.env.ref('cds_telesale.change_reason_action')
+        return {
+            'name': 'Change Reason',
+            'type': 'ir.actions.act_window',
+            'res_model': 'return.reason.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+        }

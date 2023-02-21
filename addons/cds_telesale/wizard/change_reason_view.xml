@@ -21,6 +21,5 @@
         <field name="target">new</field>
     </record>
 
-    <menuitem id="test_menu" name="Test" parent="cat_order_menu" action="change_reason_action"
-              sequence="0"/>
+
 </odoo>

@@ -8,6 +8,5 @@
 ##############################################################################
 
 
-from . import model
 from . import return_reason
 from . import telesale
