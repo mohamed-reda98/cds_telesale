@@ -22,6 +22,7 @@
         'views/orderline.xml',
         'views/return_reason.xml',
         'report/sale_order_report.xml',
+        'report/report_template.xml',
         'wizard/change_reason_view.xml',
     ],
     "pre_init_hook": None,
