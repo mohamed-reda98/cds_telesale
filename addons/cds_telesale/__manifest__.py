@@ -21,6 +21,7 @@
         'views/telesale.xml',
         'views/orderline.xml',
         'views/return_reason.xml',
+        'report/report.xml',
         'wizard/change_reason_view.xml',
     ],
     "pre_init_hook": None,
