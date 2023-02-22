@@ -8,17 +8,45 @@
                 <group class="oe_title">
                     <field name="reason"/>
                 </group>
+                <footer>
+                    <button name="change_reason_apply" string="Change For All" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
             </form>
         </field>
     </record>
 
+    <!--    <record id="change_reason_action" model="ir.actions.act_window">-->
+    <!--        <field name="name">Change Reason new</field>-->
+    <!--        <field name="type">ir.actions.act_window</field>-->
+    <!--        <field name="res_model">return.reason.wizard</field>-->
+    <!--        <field name="view_mode">form</field>-->
+    <!--        <field name="context">{'search_default_type'}</field>-->
+    <!--        <field name="view_id" ref="change_reason_view_form"/>-->
+    <!--        <field name="target">new</field>-->
+    <!--        <field name="binding_model_id" ref="sale.model_sale_order"/>-->
+    <!--    </record>-->
+
+
+    <!--    <record id="test_wizard_view_action" model="ir.actions.act_window">-->
+    <!--        <field name="name">Test Wizard</field>-->
+    <!--        <field name="type">ir.actions.act_window</field>-->
+    <!--        <field name="res_model">test.wizard.view.action</field>-->
+    <!--        <field name="view_mode">form</field>-->
+    <!--        <field name="view_id" ref="wizard_form_view"/>-->
+    <!--        <field name="target">new</field>-->
+    <!--        <field name="binding_model_id" ref="sale.model_sale_order"/>-->
+    <!--    </record>-->
+
+
     <record id="change_reason_action" model="ir.actions.act_window">
-        <field name="name">Change Reason</field>
+        <field name="name">Change Reason new</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">return.reason.wizard</field>
         <field name="view_mode">form</field>
         <field name="view_id" ref="change_reason_view_form"/>
         <field name="target">new</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
     </record>
 
 
