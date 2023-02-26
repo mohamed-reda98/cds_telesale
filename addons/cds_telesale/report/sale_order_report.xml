@@ -5,8 +5,8 @@
         <field name="name">Sale Order Lines</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">cds_telesale.report_orderline</field>
-        <field name="report_file">cds_telesale.report_orderline</field>
+        <field name="report_name">cds_telesale.report_saleorder_with_product_image</field>
+        <field name="report_file">cds_telesale.report_saleorder_with_product_image</field>
         <field name="binding_model_id" ref="model_sale_order"/>
         <field name="binding_type">report</field>
     </record>
