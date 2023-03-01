@@ -8,4 +8,5 @@
 ##############################################################################
 
 
+from . import sale_order_line_excel
 from . import sale_order_report_templates

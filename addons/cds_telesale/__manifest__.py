@@ -13,7 +13,7 @@
         'Mohamed Reda <mohamed_reda741@gmail.com>',
     ],
     'version': '0.1',
-    'depends': ['base', 'sale', 'web'],
+    'depends': ['base', 'sale', 'web', 'report_xlsx', ],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
@@ -24,6 +24,7 @@
         'wizard/change_reason_view.xml',
         'report/report_template.xml',
         'report/sale_order_report.xml',
+        'report/report_template_excel.xml',
     ],
     "pre_init_hook": None,
     "post_init_hook": None,

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_orderline_excel">
+        <!--        <t t-call="web.external_layout">-->
+
+        <!--            <t>-->
+        <!--                <div class="text-center">-->
+        <!--                    <h1>-->
+        <!--                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>-->
+        <!--                        <br/>-->
+        <!--                    </h1>-->
+        <!--                </div>-->
+        <!--            </t>-->
+        <!--            <div class="page">-->
+        <!--                <div class="oe_structure"/>-->
+
+
+        <!--                <table class="table table-sm o_main_table">-->
+        <!--                    &lt;!&ndash; In case we want to repeat the header, remove "display: table-row-group" &ndash;&gt;-->
+        <!--                    <thead style="display: table-row-group">-->
+        <!--                        <tr>-->
+
+        <!--                            <th style="width:15%;">Product Image</th>-->
+        <!--                            <th name="th_description" class="text-left">Product Name</th>-->
+        <!--                            <th name="th_quantity" class="text-right">Quantity</th>-->
+        <!--                            <th name="th_priceunit" class="text-right">Total</th>-->
+
+        <!--                        </tr>-->
+        <!--                    </thead>-->
+        <!--                    <tbody class="sale_tbody">-->
+        <!--                        &lt;!&ndash;                        <span>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            <t t-esc="product_data"/>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                        </span>&ndash;&gt;-->
+
+        <!--                        <t t-foreach="product_data" t-as="pr_data">-->
+
+        <!--                            <tr>-->
+        <!--                                <td class="text-center">-->
+        <!--                                    <img t-if="pr_data['product'].image_1920"-->
+        <!--                                         t-attf-src="data:image/*;base64,{{pr_data['product'].image_1920}}"-->
+        <!--                                         style="resize:both;width:70%;height:auto"/>-->
+        <!--                                </td>-->
+
+        <!--                                <td name="td_name">-->
+        <!--                                    <t t-esc="pr_data['product'].display_name"/>-->
+        <!--                                </td>-->
+        <!--                                <td name="td_quantity" class="text-right">-->
+        <!--                                    <t t-esc="pr_data['qty']"/>-->
+        <!--                                </td>-->
+        <!--                                <td name="td_amount" class="text-right">-->
+        <!--                                    <t t-esc="pr_data['amount']"/>-->
+        <!--                                </td>-->
+
+
+        <!--                            </tr>-->
+
+        <!--                        </t>-->
+        <!--                    </tbody>-->
+        <!--                </table>-->
+
+
+        <!--            </div>-->
+        <!--        </t>-->
+        <h1>hi</h1>
+    </template>
+
+
+    <template id="report_saleorder_excel">
+        <t t-call="web.html_container">
+            <t t-call="cds_telesale.report_orderline_excel"/>
+        </t>
+    </template>
+
+</odoo>
