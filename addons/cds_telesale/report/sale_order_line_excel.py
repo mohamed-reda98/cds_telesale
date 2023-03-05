@@ -20,6 +20,7 @@ class SaleOrderXlsx(models.AbstractModel):
         row = 1
         bold = workbook.add_format({'bold': True})
         sheet = workbook.add_worksheet()
+        # Header
         sheet.write(0, 0, 'Product Image', bold)
         sheet.write(0, 1, 'Product Name', bold)
         sheet.write(0, 2, 'Quantity', bold)
@@ -36,16 +37,19 @@ class SaleOrderXlsx(models.AbstractModel):
                 'qty': pr_qty,
                 'amount': pr_amount
             }
-            if obj.image_1920:
-                product_image = io.BytesIO(base64.b64decode(obj.image_128))
-                sheet.insert_image(row, 0, "image.png", {'image_data': product_image}, )
 
+            if obj.image_128:
+                product_image = io.BytesIO(base64.b64decode(obj.image_128))
+                sheet.insert_image(row, 0, "image.png", {'image_data': product_image, 'x_scale': 0.5, 'y_scale': 0.5}, )
+                row += 3
             # sheet.write(row, 0, pr_data['product'].display_name)
-            sheet.write(row, 1, pr_data['product'].display_name)
+            sheet.write(row, 1, pr_data['product'].name)
             # sheet.write(row, 1, pr_data['qty'])
             sheet.write(row, 2, pr_data['qty'])
             sheet.write(row, 3, pr_data['amount'])
             row += 1
 
-            # sheet.write(0, 0, obj.name, bold)
-            # sheet.write(0, 0, obj.user_id, bold)
+        # print(data, product_ids.name)
+
+        # sheet.write(0, 0, obj.name, bold)
+        # sheet.write(0, 0, obj.user_id, bold)
