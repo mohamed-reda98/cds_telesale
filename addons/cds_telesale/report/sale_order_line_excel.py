@@ -26,13 +26,19 @@ class SaleOrderXlsx(models.AbstractModel):
         sheet.write(0, 1, 'Product Name', bold)
         sheet.write(0, 2, 'Quantity', bold)
         sheet.write(0, 3, 'Total', bold)
-        total_sum = []
+        total_price = 0
         for obj in product_ids:
             # report_name = obj.name
             # One sheet by partner
             product_lines = sale_order_lines.filtered(lambda l: l.product_id == obj)
             pr_qty = sum([l.product_uom_qty for l in product_lines])
             pr_amount = sum([l.price_subtotal for l in product_lines])
+            total_price += pr_amount
+            # for line in pr_amount:
+            #     total_price += line
+            #     print(total_price)
+
+            # total_sum = sum([l.price_subtotal for l in product_lines])
             pr_data = {
                 'product': obj,
                 'qty': pr_qty,
@@ -50,13 +56,10 @@ class SaleOrderXlsx(models.AbstractModel):
             sheet.write(row, 3, pr_data['amount'])
             row += 1
 
-        sheet.write(row, 3, 'total')
-        # sheet.write(row, 4, total_sum)
+        sheet.write(row, 3, total_price)
+        sheet.write(row, 4, 'total', bold)
 
         # print(data, product_ids.name)
 
         # sheet.write(0, 0, obj.name, bold)
         # sheet.write(0, 0, obj.user_id, bold)
-        # sale_line_ids_per_move = defaultdict(lambda: self.env['sale.order.line'])
-        # for move_line in move_line_read_group:
-        #     sale_line_ids_per_move[move_line['move_id'][0]] += self.env['sale.order.line'].browse(move_line['sale_line_ids'])
