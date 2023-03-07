@@ -18,14 +18,17 @@ class SaleOrderXlsx(models.AbstractModel):
         product_ids = sale_order_lines.mapped('product_id')
         print("Hi From Excel Class")
         print(data, product_ids)
-        row = 1
+        row = 4
         bold = workbook.add_format({'bold': True})
         sheet = workbook.add_worksheet()
         # Header
-        sheet.write(0, 0, 'Product Image', bold)
-        sheet.write(0, 1, 'Product Name', bold)
-        sheet.write(0, 2, 'Quantity', bold)
-        sheet.write(0, 3, 'Total', bold)
+        sheet.set_column(3, 6, 25)
+        # sheet.set_row(3, 80)
+        sheet.write(3, 3, 'Product Image', bold)
+        sheet.write(3, 4, 'Product Name', bold)
+        sheet.write(3, 5, 'Quantity', bold)
+        sheet.write(3, 6, 'Total', bold)
+
         total_price = 0
         total_qty = 0
         for obj in product_ids:
@@ -49,18 +52,20 @@ class SaleOrderXlsx(models.AbstractModel):
 
             if obj.image_128:
                 product_image = io.BytesIO(base64.b64decode(obj.image_128))
-                sheet.insert_image(row, 0, "image.png", {'image_data': product_image, 'x_scale': 0.5, 'y_scale': 0.5}, )
-                row += 3
-            # sheet.write(row, 0, pr_data['product'].display_name)
-            sheet.write(row, 1, pr_data['product'].name)
-            # sheet.write(row, 1, pr_data['qty'])
-            sheet.write(row, 2, pr_data['qty'])
-            sheet.write(row, 3, pr_data['amount'])
-            row += 2
+                sheet.insert_image(row, 3, "image.png",
+                                   {'image_data': product_image, 'x_scale': 0.5, 'y_scale': 0.5, }, )
 
-        sheet.write(row, 3, total_price, bold)
-        sheet.write(row, 2, total_qty, bold)
-        sheet.write(row, 0, 'Totals', bold)
+            # sheet.write(row, 0, pr_data['product'].display_name)
+            sheet.write(row, 4, pr_data['product'].name)
+            # sheet.write(row, 1, pr_data['qty'])
+            sheet.write(row, 5, pr_data['qty'])
+            sheet.write(row, 6, pr_data['amount'])
+            sheet.set_row(row, 60)
+            row += 1
+
+        sheet.write(row, 6, total_price, bold)
+        sheet.write(row, 5, total_qty, bold)
+        sheet.write(row, 3, 'Totals', bold)
 
         # print(data, product_ids.name)
 
