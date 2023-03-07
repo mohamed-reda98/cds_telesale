@@ -27,6 +27,7 @@ class SaleOrderXlsx(models.AbstractModel):
         sheet.write(0, 2, 'Quantity', bold)
         sheet.write(0, 3, 'Total', bold)
         total_price = 0
+        total_qty = 0
         for obj in product_ids:
             # report_name = obj.name
             # One sheet by partner
@@ -34,6 +35,7 @@ class SaleOrderXlsx(models.AbstractModel):
             pr_qty = sum([l.product_uom_qty for l in product_lines])
             pr_amount = sum([l.price_subtotal for l in product_lines])
             total_price += pr_amount
+            total_qty += pr_qty
             # for line in pr_amount:
             #     total_price += line
             #     print(total_price)
@@ -54,10 +56,11 @@ class SaleOrderXlsx(models.AbstractModel):
             # sheet.write(row, 1, pr_data['qty'])
             sheet.write(row, 2, pr_data['qty'])
             sheet.write(row, 3, pr_data['amount'])
-            row += 1
+            row += 2
 
-        sheet.write(row, 3, total_price)
-        sheet.write(row, 4, 'total', bold)
+        sheet.write(row, 3, total_price, bold)
+        sheet.write(row, 2, total_qty, bold)
+        sheet.write(row, 0, 'Totals', bold)
 
         # print(data, product_ids.name)
 
