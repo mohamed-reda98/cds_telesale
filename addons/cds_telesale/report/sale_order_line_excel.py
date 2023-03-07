@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import base64
 import io
+from datetime import datetime
 
 from odoo import models
 
@@ -10,18 +11,34 @@ class SaleOrderXlsx(models.AbstractModel):
     _inherit = 'report.report_xlsx.abstract'
     _description = 'Get Sale Order Lines as Excel.'
 
-    def generate_xlsx_report(self, workbook, data, products):
+    def add_company_data(self, company, sheet, workbook):
+        company_name = company.name
+        if company.logo:
+            image_data = io.BytesIO(base64.b64decode(company.logo))
+            sheet.insert_image(0, 0, "logo.png",
+                               {'image_data': image_data, 'x_scale': .5, 'y_scale': .5, }, )
+            sheet.write(1, 0, company_name)
+            sheet.set_row(0, 80)
+            sheet.set_column(0, 0, 20)
+            format_date = workbook.add_format({'num_format': 'd mmm yyyy hh:mm AM/PM'})
+            time_now = datetime.now()
+            sheet.write(2, 0, time_now, format_date)
+
+    def generate_xlsx_report(self, workbook, data, products, ):
         # products = self.env['sale.order'].search([])
         # sale_orders = self.env['sale.order'].browse(products)
+        bold = workbook.add_format({'bold': True})
+        sheet = workbook.add_worksheet()
+        company = self.env.company
+        self.add_company_data(company, sheet, workbook)
         sale_orders = self.env['sale.order'].browse(products)
         sale_order_lines = products.mapped('order_line')
         product_ids = sale_order_lines.mapped('product_id')
         print("Hi From Excel Class")
         print(data, product_ids)
         row = 4
-        bold = workbook.add_format({'bold': True})
-        sheet = workbook.add_worksheet()
-        # Header
+
+        # body
         sheet.set_column(3, 6, 25)
         # sheet.set_row(3, 80)
         sheet.write(3, 3, 'Product Image', bold)
