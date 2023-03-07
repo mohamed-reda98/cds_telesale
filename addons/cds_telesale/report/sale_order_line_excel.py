@@ -4,6 +4,7 @@ import io
 from datetime import datetime
 
 from odoo import models
+from odoo.odoo import tools
 
 
 class SaleOrderXlsx(models.AbstractModel):
@@ -20,9 +21,9 @@ class SaleOrderXlsx(models.AbstractModel):
             sheet.write(1, 0, company_name)
             sheet.set_row(0, 80)
             sheet.set_column(0, 0, 20)
-            format_date = workbook.add_format({'num_format': 'd mmm yyyy hh:mm AM/PM'})
-            time_now = datetime.now()
-            sheet.write(2, 0, time_now, format_date)
+            # format_date = workbook.add_format({'num_format': 'd mmm yyyy hh:mm AM/PM'}) if uncomment add to write line
+            time_now = datetime.now().strftime(tools.misc.DEFAULT_SERVER_DATETIME_FORMAT)
+            sheet.write(2, 0, time_now)
 
     def generate_xlsx_report(self, workbook, data, products, ):
         # products = self.env['sale.order'].search([])
