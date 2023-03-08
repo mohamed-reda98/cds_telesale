@@ -12,6 +12,7 @@ class Telesale(models.Model):
         # return self.env.ref('cds_telesale.change_reason_action')
         ctx = dict(self.env.context)
         ctx.update({'active_ids': self.ids})
+
         action = self.env["ir.actions.actions"]._for_xml_id('cds_telesale.change_reason_action')
 
         action['context'] = ctx
