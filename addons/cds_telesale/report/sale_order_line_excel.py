@@ -3,6 +3,8 @@ import base64
 import io
 from datetime import datetime
 
+import pytz
+
 from odoo import models
 from odoo.odoo import tools
 
@@ -22,7 +24,8 @@ class SaleOrderXlsx(models.AbstractModel):
             sheet.set_row(0, 80)
             sheet.set_column(0, 0, 20)
             # format_date = workbook.add_format({'num_format': 'd mmm yyyy hh:mm AM/PM'}) if uncomment add to write line
-            time_now = datetime.now().strftime(tools.misc.DEFAULT_SERVER_DATETIME_FORMAT)
+            user_tz = pytz.timezone(self.env.context.get('tz') or self.env.user.tz)
+            time_now = datetime.now().astimezone(user_tz).strftime(tools.misc.DEFAULT_SERVER_DATETIME_FORMAT)
             sheet.write(2, 0, time_now)
 
     def generate_xlsx_report(self, workbook, data, products, ):
